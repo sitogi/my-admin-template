@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from "react-router-dom";
 
 import { counterSlice } from 'features/counter';
 import * as serviceWorker from './serviceWorker';
@@ -13,7 +14,9 @@ const store = configureStore({ reducer: counterSlice.reducer });
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root') as HTMLElement,
 );

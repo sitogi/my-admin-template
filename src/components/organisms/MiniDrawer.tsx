@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const MiniDrawer: FC = () => {
+export const MiniDrawer: FC = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -183,5 +183,3 @@ const MiniDrawer: FC = () => {
     </div>
   );
 };
-
-export default MiniDrawer;
