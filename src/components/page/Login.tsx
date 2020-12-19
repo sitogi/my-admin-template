@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { FC, FormEvent } from 'react';
 import {
   Button,

@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { FC, FormEvent, useState } from 'react';
 import { useHistory } from 'react-router';
 import { auth } from 'firebase/instances';

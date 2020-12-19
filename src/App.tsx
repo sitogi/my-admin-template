@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Route } from 'react-router';
 import 'App.css';
-import { Auth } from 'containers/organisms/Auth';
-import { MiniDrawer } from 'components/organisms/MiniDrawer';
+import Auth from 'containers/organisms/Auth';
+import MiniDrawer from 'components/organisms/MiniDrawer';
 import LoginContainer from 'containers/page/Login';
 
 const App: FC = () => (
