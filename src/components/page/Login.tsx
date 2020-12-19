@@ -1,6 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { FC, FormEvent } from 'react';
-import { Button, Message, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 interface LoginProps {
@@ -10,17 +18,18 @@ interface LoginProps {
   handleOnSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-export const Login: FC<LoginProps> = ({
+const Login: FC<LoginProps> = ({
   errorMsg,
-  handleOnChangeEmail = () => {},
-  handleOnChangePassword = () => {},
-  handleOnSubmit = () => {},
+  handleOnChangeEmail,
+  handleOnChangePassword,
+  handleOnSubmit,
 }) => {
   return (
     <Grid textAlign="center" style={{ height: '100vh' }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="teal" textAlign="center">
-          <Image src="https://react.semantic-ui.com/logo.png" /> Log-in to your account
+          <Image src="https://react.semantic-ui.com/logo.png" /> Log-in to your
+          account
         </Header>
         <Form size="large" onSubmit={handleOnSubmit}>
           <Segment>
@@ -29,7 +38,9 @@ export const Login: FC<LoginProps> = ({
               icon="user"
               iconPosition="left"
               placeholder="E-mail address"
-              onChange={(event, data) => handleOnChangeEmail(String(data.value))}
+              onChange={(event, data) =>
+                handleOnChangeEmail(String(data.value))
+              }
             />
             <Form.Input
               fluid
@@ -37,7 +48,9 @@ export const Login: FC<LoginProps> = ({
               iconPosition="left"
               placeholder="Password"
               type="password"
-              onChange={(event, data) => handleOnChangePassword(String(data.value))}
+              onChange={(event, data) =>
+                handleOnChangePassword(String(data.value))
+              }
             />
 
             <Button color="teal" fluid size="large">
@@ -53,3 +66,5 @@ export const Login: FC<LoginProps> = ({
     </Grid>
   );
 };
+
+export default Login;
