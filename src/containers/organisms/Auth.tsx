@@ -2,8 +2,10 @@ import React, { FC } from 'react';
 import { Redirect } from 'react-router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from 'firebase/instances';
+import { PATH_LOGIN } from 'containers/organisms/RouteManager';
 
 const Auth: FC = ({ children }) => {
+  // https://github.com/CSFrequency/react-firebase-hooks/issues/92
   const [user, loading, error] = useAuthState(auth);
 
   if (loading) {
@@ -26,7 +28,7 @@ const Auth: FC = ({ children }) => {
     return <div>{children}</div>;
   }
 
-  return <Redirect to="/login" />;
+  return <Redirect to={PATH_LOGIN} />;
 };
 
 export default Auth;

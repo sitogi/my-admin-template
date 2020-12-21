@@ -2,6 +2,7 @@ import React, { FC, FormEvent, useState } from 'react';
 import { useHistory } from 'react-router';
 import { auth } from 'firebase/instances';
 import Login from 'components/page/Login';
+import { PATH_ROOT } from 'containers/organisms/RouteManager';
 
 const LoginContainer: FC = () => {
   const [email, setEmail] = useState<string>(localStorage.userEmail ?? '');
@@ -10,6 +11,7 @@ const LoginContainer: FC = () => {
   const history = useHistory();
 
   // TODO: add Loader or Splash
+  // TODO: add Chakra UI
 
   const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
     if (event) {
@@ -17,7 +19,7 @@ const LoginContainer: FC = () => {
       try {
         await auth.signInWithEmailAndPassword(email, password);
         localStorage.userEmail = email;
-        history.push('/'); // TODO: to constant
+        history.push(PATH_ROOT);
       } catch (error) {
         setErrorMsg(error);
       }

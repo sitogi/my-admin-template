@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
-import { Route } from 'react-router';
-import 'App.css';
 import Auth from 'containers/organisms/Auth';
 import MiniDrawer from 'components/organisms/MiniDrawer';
-import LoginContainer from 'containers/page/Login';
+import RouteManager from 'containers/organisms/RouteManager';
 
 const App: FC = () => (
   <div className="container">
-    <Route exact path="/login" component={LoginContainer} />
+    <RouteManager />
     <Auth>
       <header>
         <h1>Admin Dashboard</h1>
