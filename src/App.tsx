@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Auth from 'containers/organisms/Auth';
-import MiniDrawer from 'components/organisms/MiniDrawer';
 import RouteManager from 'containers/organisms/RouteManager';
+import AdminBaseFrame from './components/page/AdminBaseFrame';
 
 const App: FC = () => (
   <div className="container">
@@ -10,7 +10,7 @@ const App: FC = () => (
       <header>
         <h1>Admin Dashboard</h1>
       </header>
-      <MiniDrawer />
+      <AdminBaseFrame />
     </Auth>
   </div>
 );

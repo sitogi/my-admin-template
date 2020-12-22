@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.1",
-    "@material-ui/icons": "^4.11.2",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^10.4.9",
@@ -15,7 +13,6 @@
     "@types/react-dom": "16.9.8",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
-    "clsx": "^1.1.1",
     "firebase": "^8.1.2",
     "react": "17.0.0",
     "react-dom": "17.0.0",
@@ -83,8 +80,7 @@
     "stylelint-order": "^4.1.0"
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
