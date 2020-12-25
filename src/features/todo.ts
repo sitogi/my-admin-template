@@ -14,6 +14,7 @@ export type TodoState = {
   doneList: { [id: string]: Task };
 };
 
+// TODO: いらないので構成を掴んだら消す
 export const todoSlice = createSlice({
   name: 'todo',
   initialState: { todoList: {}, doneList: {} } as TodoState,
