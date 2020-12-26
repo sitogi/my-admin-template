@@ -25,7 +25,7 @@ const Auth: FC = ({ children }) => {
   }
 
   if (user) {
-    return <div>{children}</div>;
+    return <>{children}</>;
   }
 
   return <Redirect to={PATH_LOGIN} />;
