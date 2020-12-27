@@ -19,12 +19,7 @@ interface LoginProps {
   handleOnSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-const Login: FC<LoginProps> = ({
-  errorMsg,
-  handleOnChangeEmail,
-  handleOnChangePassword,
-  handleOnSubmit,
-}) => {
+const Login: FC<LoginProps> = ({ errorMsg, handleOnChangeEmail, handleOnChangePassword, handleOnSubmit }) => {
   return (
     <Container>
       <Alert status="error">
@@ -35,20 +30,12 @@ const Login: FC<LoginProps> = ({
       </Alert>
       <FormControl id="email">
         <FormLabel>Email address</FormLabel>
-        <Input
-          type="email"
-          onChange={(event) => handleOnChangeEmail(String(event.target.value))}
-        />
+        <Input type="email" onChange={(event) => handleOnChangeEmail(String(event.target.value))} />
       </FormControl>
       <FormControl id="password">
         <FormLabel>Password</FormLabel>
         <Input type="password" />
-        <Input
-          type="password"
-          onChange={(event) =>
-            handleOnChangePassword(String(event.target.value))
-          }
-        />
+        <Input type="password" onChange={(event) => handleOnChangePassword(String(event.target.value))} />
       </FormControl>
       <Button colorScheme="blue" onClick={() => handleOnSubmit}>
         Button

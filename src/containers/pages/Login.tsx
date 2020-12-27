@@ -1,7 +1,7 @@
 import React, { FC, FormEvent, useState } from 'react';
 import { useHistory } from 'react-router';
 import { auth } from 'firebase/instances';
-import Login from 'components/page/Login';
+import Login from 'components/pages/Login';
 import { PATH_ROOT } from 'containers/organisms/RouteManager';
 
 const LoginContainer: FC = () => {

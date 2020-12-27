@@ -3,7 +3,7 @@ import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-
 import { css, jsx } from '@emotion/react';
 import Auth from 'containers/organisms/Auth';
 import RouteManager from 'containers/organisms/RouteManager';
-import AdminBaseFrame from './components/page/AdminBaseFrame';
+import AdminBaseFrame from './components/pages/AdminBaseFrame';
 
 const baseCss = css`
   height: 100vh;

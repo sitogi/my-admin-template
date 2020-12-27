@@ -2,22 +2,7 @@
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { jsx } from '@emotion/react';
 import { Spinner } from '@chakra-ui/react';
-
-const HorizontallyVerticallyCentered = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => (
-  <div
-    style={{
-      display: 'grid',
-      placeItems: 'center',
-      height: '100%',
-    }}
-  >
-    {children}
-  </div>
-);
+import HorizontallyVerticallyCentered from 'components/molecules/HorizontallyVerticallyCentered';
 
 const Loader: FC = () => (
   <HorizontallyVerticallyCentered>

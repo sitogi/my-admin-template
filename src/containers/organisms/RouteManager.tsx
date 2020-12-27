@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Route } from 'react-router';
-import LoginContainer from 'containers/page/Login';
+import LoginContainer from 'containers/pages/Login';
 
 export const PATH_ROOT = '/';
 export const PATH_LOGIN = '/login';

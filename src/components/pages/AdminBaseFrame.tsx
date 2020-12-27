@@ -2,9 +2,10 @@
 import React, { FC, Fragment } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
 import { Route, Switch } from 'react-router';
-import Navigation from 'components/organisms/Navigation';
+import Sidebar from 'containers/templates/Sidebar';
 import { PATH_ROOT } from 'containers/organisms/RouteManager';
-import PageHeader, { HEADER_HEIGHT } from 'components/organisms/PageHeader';
+import { HEADER_HEIGHT } from 'components/organisms/PageHeader';
+import PageHeaderContainer from 'containers/organisms/PageHeader';
 
 const containerCss = css`
   display: flex;
@@ -13,9 +14,6 @@ const containerCss = css`
 
 const navigationCss = css`
   flex: 0 0 auto;
-  height: 100%;
-  width: 240px;
-  background-color: #d9ffdb;
 `;
 
 const mainCss = css`
@@ -35,10 +33,10 @@ const DummyContent = () => (
 const AdminBaseFrame: FC = () => {
   return (
     <Fragment>
-      <PageHeader />
+      <PageHeaderContainer />
       <div css={containerCss}>
         <aside css={navigationCss}>
-          <Navigation />
+          <Sidebar />
         </aside>
         <main css={mainCss}>
           <Switch>
