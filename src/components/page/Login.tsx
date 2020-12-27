@@ -1,14 +1,16 @@
-import React, { FC, FormEvent } from 'react';
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
   Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment,
-} from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+  CloseButton,
+  Container,
+  FormControl,
+  FormLabel,
+  Input,
+} from '@chakra-ui/react';
+import React, { FC, FormEvent } from 'react';
 
 interface LoginProps {
   errorMsg: string;
@@ -24,45 +26,34 @@ const Login: FC<LoginProps> = ({
   handleOnSubmit,
 }) => {
   return (
-    <Grid textAlign="center" style={{ height: '100vh' }} verticalAlign="middle">
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="teal" textAlign="center">
-          <Image src="https://react.semantic-ui.com/logo.png" /> Log-in to your
-          account
-        </Header>
-        <Form size="large" onSubmit={handleOnSubmit}>
-          <Segment>
-            <Form.Input
-              fluid
-              icon="user"
-              iconPosition="left"
-              placeholder="E-mail address"
-              onChange={(event, data) =>
-                handleOnChangeEmail(String(data.value))
-              }
-            />
-            <Form.Input
-              fluid
-              icon="lock"
-              iconPosition="left"
-              placeholder="Password"
-              type="password"
-              onChange={(event, data) =>
-                handleOnChangePassword(String(data.value))
-              }
-            />
-
-            <Button color="teal" fluid size="large">
-              Login
-            </Button>
-          </Segment>
-        </Form>
-        {errorMsg ? <Message error list={[errorMsg]} /> : <div />}
-        <Message>
-          New to us? <Link to="/register">Sign Up</Link>
-        </Message>
-      </Grid.Column>
-    </Grid>
+    <Container>
+      <Alert status="error">
+        <AlertIcon />
+        <AlertTitle mr={2}>Your browser is outdated!</AlertTitle>
+        <AlertDescription>{errorMsg}</AlertDescription>
+        <CloseButton position="absolute" right="8px" top="8px" />
+      </Alert>
+      <FormControl id="email">
+        <FormLabel>Email address</FormLabel>
+        <Input
+          type="email"
+          onChange={(event) => handleOnChangeEmail(String(event.target.value))}
+        />
+      </FormControl>
+      <FormControl id="password">
+        <FormLabel>Password</FormLabel>
+        <Input type="password" />
+        <Input
+          type="password"
+          onChange={(event) =>
+            handleOnChangePassword(String(event.target.value))
+          }
+        />
+      </FormControl>
+      <Button colorScheme="blue" onClick={() => handleOnSubmit}>
+        Button
+      </Button>
+    </Container>
   );
 };
 

@@ -4,14 +4,11 @@ import { css, jsx } from '@emotion/react';
 import { Route, Switch } from 'react-router';
 import Navigation from 'components/organisms/Navigation';
 import { PATH_ROOT } from 'containers/organisms/RouteManager';
-import EnhancedCounterBoard from 'containers/organisms/CounterBoard';
-import PageHeader from 'components/organisms/PageHeader';
-
-const headerHeight = `55px`;
+import PageHeader, { HEADER_HEIGHT } from 'components/organisms/PageHeader';
 
 const containerCss = css`
   display: flex;
-  height: calc(100vh - ${headerHeight});
+  height: calc(100vh - ${HEADER_HEIGHT});
 `;
 
 const navigationCss = css`
@@ -29,6 +26,12 @@ const mainCss = css`
   background-color: #fff3fb;
 `;
 
+const DummyContent = () => (
+  <div>
+    <p>あいうえお</p>
+  </div>
+);
+
 const AdminBaseFrame: FC = () => {
   return (
     <Fragment>
@@ -39,7 +42,7 @@ const AdminBaseFrame: FC = () => {
         </aside>
         <main css={mainCss}>
           <Switch>
-            <Route exact path={PATH_ROOT} component={EnhancedCounterBoard} />
+            <Route exact path={PATH_ROOT} component={DummyContent} />
           </Switch>
         </main>
       </div>

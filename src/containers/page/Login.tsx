@@ -10,9 +10,6 @@ const LoginContainer: FC = () => {
   const [errorMsg, setErrorMsg] = useState<string>('');
   const history = useHistory();
 
-  // TODO: add Loader or Splash
-  // TODO: add Chakra UI
-
   const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
     if (event) {
       event.preventDefault();

@@ -1,13 +1,20 @@
 /** @jsx jsx */
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Box, Flex, Heading, IconButton } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  IconButton,
+  Spacer,
+} from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
-const headerHeight = `55px`;
+export const HEADER_HEIGHT = `55px`;
 
 const headerCss = css`
-  height: ${headerHeight};
+  height: ${HEADER_HEIGHT};
   width: 100vw;
   background-color: #e8f6ff;
 `;
@@ -25,6 +32,10 @@ const PageHeader: FC = () => (
       </Box>
       <Box>
         <Heading>Firebase Admin</Heading>
+      </Box>
+      <Spacer />
+      <Box>
+        <Button colorScheme="blue">Logout</Button>
       </Box>
     </Flex>
   </div>
