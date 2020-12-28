@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router';
 import { auth } from 'firebase/instances';
 import Login from 'components/pages/Login';
@@ -10,15 +10,14 @@ const LoginContainer: FC = () => {
   const [errorMsg, setErrorMsg] = useState<string>('');
   const history = useHistory();
 
-  const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    if (event) {
-      event.preventDefault();
-      try {
-        await auth.signInWithEmailAndPassword(email, password);
-        localStorage.userEmail = email;
-        history.push(PATH_ROOT);
-      } catch (error) {
-        setErrorMsg(error);
+  const login = async () => {
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      localStorage.userEmail = email;
+      history.push(PATH_ROOT);
+    } catch (e) {
+      if (e instanceof Error) {
+        setErrorMsg(e.message);
       }
     }
   };
@@ -28,7 +27,7 @@ const LoginContainer: FC = () => {
       errorMsg={errorMsg}
       handleOnChangeEmail={(value) => setEmail(value)}
       handleOnChangePassword={(value) => setPassword(value)}
-      handleOnSubmit={handleOnSubmit}
+      handleOnSubmit={login}
     />
   );
 };

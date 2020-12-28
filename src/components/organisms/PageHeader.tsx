@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Box, Button, Flex, Heading, IconButton, Spacer } from '@chakra-ui/react';
+import { Box, Flex, Heading, IconButton, Spacer } from '@chakra-ui/react';
 import { ArrowLeftIcon, HamburgerIcon } from '@chakra-ui/icons';
 import VerticallyCentered from 'components/molecules/VertialyCentered';
+import LogoutButtonContainer from '../atoms/LogoutButton';
 
 export const HEADER_HEIGHT = `55px`;
 
@@ -36,7 +37,7 @@ const PageHeader: FC<PageHeaderProps> = ({ menuVisible, menuButtonClicked }) => 
         </Box>
         <Spacer />
         <Box>
-          <Button colorScheme="blue">Logout</Button>
+          <LogoutButtonContainer />
         </Box>
       </Flex>
     </VerticallyCentered>
