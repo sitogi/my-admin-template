@@ -1,46 +1,33 @@
 /** @jsx jsx */
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Box, Flex, Heading, IconButton, Spacer } from '@chakra-ui/react';
-import { ArrowLeftIcon, HamburgerIcon } from '@chakra-ui/icons';
+import { Box, Divider, Flex, Heading, Spacer } from '@chakra-ui/react';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
-import LogoutButtonContainer from '../../atoms/LogoutButton';
-
-export const HEADER_HEIGHT = `55px`;
+import { HEADER_HEIGHT_PX, SIDEBAR_WIDTH_PX } from 'components/styleConstants';
+import LogoutButtonContainer from 'components/atoms/LogoutButton';
 
 const headerCss = css`
-  height: ${HEADER_HEIGHT};
-  width: 100vw;
-  background-color: #e8f6ff;
+  height: calc(${HEADER_HEIGHT_PX} + 0.5rem); // サイドメニューの Divider の開始位置と無理やり一致させている
+  width: calc(100vw - ${SIDEBAR_WIDTH_PX});
+  background-color: #f4f3ef;
 `;
 
-interface PageHeaderProps {
-  menuVisible: boolean;
-  menuButtonClicked: () => void;
-}
-
-const PageHeader: FC<PageHeaderProps> = ({ menuVisible, menuButtonClicked }) => (
+const PageHeader: FC<{ currentPageTitle?: string }> = ({ currentPageTitle = 'Dashboard' }) => (
   <div css={headerCss}>
     <VerticallyCentered>
       <Flex>
         <Box>
-          <IconButton
-            variant="o"
-            aria-label="Menu open"
-            size="lg"
-            icon={menuVisible ? <ArrowLeftIcon /> : <HamburgerIcon />}
-            onClick={(_event) => menuButtonClicked()}
-          />
-        </Box>
-        <Box>
-          <Heading>Firebase Admin</Heading>
+          <Heading as="h3" size="lg" ml="30px">
+            {currentPageTitle}
+          </Heading>
         </Box>
         <Spacer />
-        <Box>
+        <Box mr="30px">
           <LogoutButtonContainer />
         </Box>
       </Flex>
     </VerticallyCentered>
+    <Divider />
   </div>
 );
 

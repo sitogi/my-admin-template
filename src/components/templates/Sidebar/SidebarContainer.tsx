@@ -1,14 +1,12 @@
 /** @jsx jsx */
-import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
+import React, { FC, useState } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { jsx } from '@emotion/react';
-import { useSelector } from 'react-redux';
-import { RootState } from 'store';
-import Sidebar from './Sidebar';
+import Sidebar from 'components/templates/Sidebar/Sidebar';
 
 const SidebarContainer: FC = () => {
-  const visible = useSelector<RootState, boolean>((state) => state.sidebar.visible);
+  const [visible, setVisible] = useState<boolean>(true);
 
-  return <Sidebar visible={visible} />;
+  return <Sidebar visible={visible} hamburgerClicked={() => setVisible(!visible)} />;
 };
 
 export default SidebarContainer;
