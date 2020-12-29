@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { jsx } from '@emotion/react';
-import PageHeader from 'components/organisms/PageHeader';
+import PageHeader from 'components/organisms/PageHeader/PageHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import { sidebarSlice } from 'features/sidebar';
 import { RootState } from 'store';

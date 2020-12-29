@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import Auth from 'containers/organisms/Auth';
-import RouteManager from 'containers/organisms/RouteManager';
-import AdminBaseFrame from './components/pages/AdminBaseFrame';
+import Auth from 'components/organisms/Auth/Auth';
+import RouteManager from 'components/organisms/RouteManager/RouteManager';
+import AdminBaseFrame from './components/pages/AdminBaseFrame/AdminBaseFrame';
 
 const baseCss = css`
   height: 100vh;

@@ -3,7 +3,7 @@ import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-
 import { jsx } from '@emotion/react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
-import Sidebar from 'components/templates/Sidebar';
+import Sidebar from './Sidebar';
 
 const SidebarContainer: FC = () => {
   const visible = useSelector<RootState, boolean>((state) => state.sidebar.visible);

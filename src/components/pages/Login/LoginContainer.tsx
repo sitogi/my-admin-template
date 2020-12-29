@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router';
 import { auth } from 'firebase/instances';
-import Login from 'components/pages/Login';
-import { PATH_ROOT } from 'containers/organisms/RouteManager';
+import { PATH_ROOT } from 'components/organisms/RouteManager/RouteManager';
+import Login from './Login';
 
 const LoginContainer: FC = () => {
   const [email, setEmail] = useState<string>(localStorage.userEmail ?? '');

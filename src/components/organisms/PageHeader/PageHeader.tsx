@@ -3,8 +3,8 @@ import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-
 import { css, jsx } from '@emotion/react';
 import { Box, Flex, Heading, IconButton, Spacer } from '@chakra-ui/react';
 import { ArrowLeftIcon, HamburgerIcon } from '@chakra-ui/icons';
-import VerticallyCentered from 'components/molecules/VertialyCentered';
-import LogoutButtonContainer from '../atoms/LogoutButton';
+import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
+import LogoutButtonContainer from '../../atoms/LogoutButton';
 
 export const HEADER_HEIGHT = `55px`;
 
