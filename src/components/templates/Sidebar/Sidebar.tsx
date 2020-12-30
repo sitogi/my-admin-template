@@ -1,44 +1,8 @@
-/** @jsx jsx */
-import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import { css, jsx } from '@emotion/react';
+import React, { FC } from 'react';
 import { Box, Center, Divider, Flex, IconButton, VStack } from '@chakra-ui/react';
 import { CalendarIcon, EmailIcon, HamburgerIcon, StarIcon } from '@chakra-ui/icons';
 import { HEADER_HEIGHT_PX, SIDEBAR_WIDTH_PX } from 'components/styleConstants';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
-
-const sidebarCss = css`
-  flex: 0 0 auto;
-  height: 100%;
-  width: ${SIDEBAR_WIDTH_PX};
-  background-color: #ffffff;
-  font-family: Muli, Helvetica, Arial, 'sans-serif';
-  font-size: 12px;
-  font-weight: 400;
-  color: #908d8c;
-  &:hover {
-    color: #242428;
-  }
-`;
-
-const sidebarSmallCss = css`
-  flex: 0 0 auto;
-  height: 100%;
-  width: 70px;
-  background-color: #ffffff;
-  font-family: Muli, Helvetica, Arial, 'sans-serif';
-  font-size: 12px;
-  font-weight: 400;
-  color: #908d8c;
-`;
-
-const appTitleCss = css`
-  font-family: Muli, Helvetica, Arial, 'sans-serif';
-  font-size: 20px;
-  font-weight: 300;
-  color: #908d8c;
-  width: 100%;
-  text-align: center;
-`;
 
 const appTitle = (hamburgerClicked: () => void) => (
   <Box h={HEADER_HEIGHT_PX}>
@@ -55,7 +19,7 @@ const appTitle = (hamburgerClicked: () => void) => (
           h="70px"
         />
         <Center>
-          <p css={appTitleCss}>FB Admin</p>
+          <p>FB Admin</p>
         </Center>
       </Flex>
     </VerticallyCentered>
@@ -94,7 +58,7 @@ const closedMenuItem = (iconNode: any) => (
 const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void }> = ({ visible, hamburgerClicked }) => {
   if (visible) {
     return (
-      <div css={sidebarCss}>
+      <div>
         <VStack align="stretch">
           {appTitle(hamburgerClicked)}
           <Divider />
@@ -110,7 +74,7 @@ const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void }> = ({ visib
   }
 
   return (
-    <div css={sidebarSmallCss}>
+    <div>
       <VStack align="stretch">
         {closedAppTitle(hamburgerClicked)}
         <Divider />

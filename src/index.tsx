@@ -4,8 +4,8 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { counterSlice } from 'features/counter';
-import { ChakraProvider } from '@chakra-ui/react';
 import * as serviceWorker from 'serviceWorker';
+import './index.css';
 import App from 'App';
 import { sidebarSlice } from 'features/sidebar';
 
@@ -19,9 +19,7 @@ const store = configureStore({
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <ChakraProvider>
-        <App />
-      </ChakraProvider>
+      <App />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root') as HTMLElement,

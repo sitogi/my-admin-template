@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
 import React, { FC, useState } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { jsx } from '@emotion/react';
