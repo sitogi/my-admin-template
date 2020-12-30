@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Box, Divider, Flex, Heading, IconButton, VStack } from '@chakra-ui/react';
+import { Box, Center, Divider, Flex, IconButton, VStack } from '@chakra-ui/react';
 import { CalendarIcon, EmailIcon, HamburgerIcon, StarIcon } from '@chakra-ui/icons';
 import { HEADER_HEIGHT_PX, SIDEBAR_WIDTH_PX } from 'components/styleConstants';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
@@ -11,53 +11,98 @@ const sidebarCss = css`
   height: 100%;
   width: ${SIDEBAR_WIDTH_PX};
   background-color: #ffffff;
+  font-family: Muli, Helvetica, Arial, 'sans-serif';
+  font-size: 12px;
+  font-weight: 400;
+  color: #908d8c;
+  &:hover {
+    color: #242428;
+  }
 `;
 
 const sidebarSmallCss = css`
   flex: 0 0 auto;
   height: 100%;
-  width: 50px;
+  width: 70px;
   background-color: #ffffff;
+  font-family: Muli, Helvetica, Arial, 'sans-serif';
+  font-size: 12px;
+  font-weight: 400;
+  color: #908d8c;
 `;
+
+const appTitleCss = css`
+  font-family: Muli, Helvetica, Arial, 'sans-serif';
+  font-size: 20px;
+  font-weight: 300;
+  color: #908d8c;
+  width: 100%;
+  text-align: center;
+`;
+
+const appTitle = (hamburgerClicked: () => void) => (
+  <Box h={HEADER_HEIGHT_PX}>
+    <VerticallyCentered>
+      <Flex>
+        <IconButton
+          icon={<HamburgerIcon />}
+          variant="o"
+          colorScheme="teal"
+          aria-label="Menu open"
+          onClick={(_event) => hamburgerClicked()}
+          mt="5px"
+          w="70px"
+          h="70px"
+        />
+        <Center>
+          <p css={appTitleCss}>FB Admin</p>
+        </Center>
+      </Flex>
+    </VerticallyCentered>
+  </Box>
+);
+
+const menuItem = (iconNode: any, label: string) => (
+  <Box h="60px">
+    <IconButton icon={iconNode} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" w="70px" h="70px" />
+    {label}
+  </Box>
+);
+
+const closedAppTitle = (hamburgerClicked: () => void) => (
+  <Box h={HEADER_HEIGHT_PX}>
+    <VerticallyCentered>
+      <IconButton
+        icon={<HamburgerIcon />}
+        variant="o"
+        colorScheme="teal"
+        aria-label="Menu open"
+        onClick={(_event) => hamburgerClicked()}
+        w="70px"
+        h="70px"
+      />
+    </VerticallyCentered>
+  </Box>
+);
+
+const closedMenuItem = (iconNode: any) => (
+  <Box h="60px">
+    <IconButton icon={iconNode} variant="o" colorScheme="teal" aria-label="Menu open" w="70px" h="70px" />
+  </Box>
+);
 
 const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void }> = ({ visible, hamburgerClicked }) => {
   if (visible) {
     return (
       <div css={sidebarCss}>
         <VStack align="stretch">
-          <Box h={HEADER_HEIGHT_PX}>
-            <VerticallyCentered>
-              <Flex>
-                <IconButton
-                  icon={<HamburgerIcon />}
-                  variant="o"
-                  colorScheme="teal"
-                  aria-label="Menu open"
-                  size="lg"
-                  onClick={(_event) => hamburgerClicked()}
-                  mt="5px"
-                />
-                <Heading as="h3" size="lg" mt="10px">
-                  FB Admin
-                </Heading>
-              </Flex>
-            </VerticallyCentered>
-          </Box>
+          {appTitle(hamburgerClicked)}
           <Divider />
-          <Box h="30px">
-            <IconButton icon={<CalendarIcon />} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" />
-            Users
-          </Box>
+          {menuItem(<CalendarIcon />, 'USERS')}
           <Divider />
-          <Box h="30px">
-            <IconButton icon={<StarIcon />} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" />
-            Orders
-          </Box>
+          {menuItem(<StarIcon />, 'ORDERS')}
           <Divider />
-          <Box h="30px">
-            <IconButton icon={<EmailIcon />} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" />
-            Statuses
-          </Box>
+          {menuItem(<EmailIcon />, 'STATUSES')}
           <Divider />
         </VStack>
       </div>
@@ -67,30 +112,13 @@ const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void }> = ({ visib
   return (
     <div css={sidebarSmallCss}>
       <VStack align="stretch">
-        <Box h={HEADER_HEIGHT_PX}>
-          <VerticallyCentered>
-            <IconButton
-              icon={<HamburgerIcon />}
-              variant="o"
-              colorScheme="teal"
-              aria-label="Menu open"
-              size="lg"
-              onClick={(_event) => hamburgerClicked()}
-            />
-          </VerticallyCentered>
-        </Box>
+        {closedAppTitle(hamburgerClicked)}
         <Divider />
-        <Box h="30px">
-          <IconButton icon={<CalendarIcon />} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" />
-        </Box>
+        {closedMenuItem(<CalendarIcon />)}
         <Divider />
-        <Box h="30px">
-          <IconButton icon={<StarIcon />} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" />
-        </Box>
+        {closedMenuItem(<StarIcon />)}
         <Divider />
-        <Box h="30px">
-          <IconButton icon={<EmailIcon />} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" />
-        </Box>
+        {closedMenuItem(<EmailIcon />)}
         <Divider />
       </VStack>
     </div>

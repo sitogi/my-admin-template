@@ -4,6 +4,7 @@ import { jsx } from '@emotion/react';
 import { auth } from 'firebase/instances';
 import LogoutButton from './presentor';
 
+// TODO: リネーム
 const LogoutButtonContainer: FC = () => {
   const logout = () => {
     void auth.signOut();
