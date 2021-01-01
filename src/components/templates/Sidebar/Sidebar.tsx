@@ -8,13 +8,14 @@ import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyC
 
 const sidebarCss = css`
   flex: 0 0 auto;
-  height: 100%;
   width: ${SIDEBAR_WIDTH_PX};
-  background-color: #ffffff;
+  height: 100%;
   font-family: Muli, Helvetica, Arial, 'sans-serif';
   font-size: 12px;
   font-weight: 400;
   color: #908d8c;
+  background-color: #fff;
+
   &:hover {
     color: #242428;
   }
@@ -22,21 +23,21 @@ const sidebarCss = css`
 
 const sidebarSmallCss = css`
   flex: 0 0 auto;
-  height: 100%;
   width: 70px;
-  background-color: #ffffff;
+  height: 100%;
   font-family: Muli, Helvetica, Arial, 'sans-serif';
   font-size: 12px;
   font-weight: 400;
   color: #908d8c;
+  background-color: #fff;
 `;
 
 const appTitleCss = css`
+  width: 100%;
   font-family: Muli, Helvetica, Arial, 'sans-serif';
   font-size: 20px;
   font-weight: 300;
   color: #908d8c;
-  width: 100%;
   text-align: center;
 `;
 
