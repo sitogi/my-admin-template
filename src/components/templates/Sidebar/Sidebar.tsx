@@ -1,8 +1,10 @@
 /** @jsx jsx */
-import React, { FC, ReactElement } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
+import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Box, Center, Divider, Flex, IconButton, VStack } from '@chakra-ui/react';
-import { CalendarIcon, EmailIcon, HamburgerIcon, StarIcon } from '@chakra-ui/icons';
+import { Box, Center, Divider, Flex, Icon, IconButton, Text, VStack } from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons';
+import { IconType } from 'react-icons';
+import { MdAttachMoney, MdDashboard, MdPersonOutline } from 'react-icons/md';
 import { HEADER_HEIGHT_PX, SIDEBAR_WIDTH_PX } from 'components/styleConstants';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
 
@@ -68,20 +70,18 @@ const appTitle = (hamburgerClicked: () => void) => (
   </Box>
 );
 
-const menuItem = (iconNode: ReactElement, label: string) => (
-  <Box h="60px" css={hover}>
-    <IconButton icon={iconNode} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" w="70px" h="70px" />
-    {label}
-  </Box>
+const menuItem = (icon: IconType, label?: string) => (
+  <Flex alignItems="center" h="60px" color="#9a9a9a" cursor="pointer" _hover={{ color: 'teal.400' }}>
+    <Icon as={icon} w={7} h={7} mt="6px" ml="20px" />
+    {label && (
+      <Text mt="7px" ml="15px" fontSize="14px" fontWeight="300">
+        {label}
+      </Text>
+    )}
+  </Flex>
 );
 
-const closedMenuItem = (iconNode: ReactElement) => (
-  <Box h="60px" css={hover}>
-    <IconButton icon={iconNode} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" w="70px" h="70px" />
-  </Box>
-);
-
-const closedAppTitle = (hamburgerClicked: () => void) => (
+const hamburgerButton = (hamburgerClicked: () => void) => (
   <Box h={HEADER_HEIGHT_PX}>
     <VerticallyCentered>
       <IconButton
@@ -107,12 +107,9 @@ const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void }> = ({ visib
         <VStack align="stretch">
           {appTitle(hamburgerClicked)}
           <Divider />
-          {menuItem(<CalendarIcon />, 'USERS')}
-          <Divider />
-          {menuItem(<StarIcon />, 'ORDERS')}
-          <Divider />
-          {menuItem(<EmailIcon />, 'STATUSES')}
-          <Divider />
+          {menuItem(MdDashboard, 'Dashboard')}
+          {menuItem(MdPersonOutline, 'Users')}
+          {menuItem(MdAttachMoney, 'Amount')}
         </VStack>
       </div>
     );
@@ -121,14 +118,11 @@ const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void }> = ({ visib
   return (
     <div css={sidebarSmallCss}>
       <VStack align="stretch">
-        {closedAppTitle(hamburgerClicked)}
+        {hamburgerButton(hamburgerClicked)}
         <Divider />
-        {closedMenuItem(<CalendarIcon />)}
-        <Divider />
-        {closedMenuItem(<StarIcon />)}
-        <Divider />
-        {closedMenuItem(<EmailIcon />)}
-        <Divider />
+        {menuItem(MdDashboard)}
+        {menuItem(MdPersonOutline)}
+        {menuItem(MdAttachMoney)}
       </VStack>
     </div>
   );

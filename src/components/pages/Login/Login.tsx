@@ -29,13 +29,13 @@ const Login: FC<LoginProps> = ({ errorMsg, handleOnChangeEmail, handleOnChangePa
       )}
       <Center w="400px" mt="10px">
         <FormControl id="email">
-          <FormLabel>Email address</FormLabel>
+          <FormLabel color="#777">Email address</FormLabel>
           <Input type="email" onChange={(event) => handleOnChangeEmail(String(event.target.value))} />
         </FormControl>
       </Center>
       <Center w="400px" mt="10px">
         <FormControl id="password">
-          <FormLabel>Password</FormLabel>
+          <FormLabel color="#777">Password</FormLabel>
           <Input type="password" onChange={(event) => handleOnChangePassword(String(event.target.value))} />
         </FormControl>
       </Center>
