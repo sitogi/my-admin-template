@@ -10,7 +10,7 @@ const sidebarCss = css`
   flex: 0 0 auto;
   width: ${SIDEBAR_WIDTH_PX};
   height: 100%;
-  font-family: Muli, Helvetica, Arial, 'sans-serif';
+  font-family: Muli, Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #908d8c;
@@ -25,7 +25,7 @@ const sidebarSmallCss = css`
   flex: 0 0 auto;
   width: 70px;
   height: 100%;
-  font-family: Muli, Helvetica, Arial, 'sans-serif';
+  font-family: Muli, Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #908d8c;
@@ -34,7 +34,7 @@ const sidebarSmallCss = css`
 
 const appTitleCss = css`
   width: 100%;
-  font-family: Muli, Helvetica, Arial, 'sans-serif';
+  font-family: Muli, Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: 300;
   color: #908d8c;

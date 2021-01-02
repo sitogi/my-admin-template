@@ -16,8 +16,8 @@ const navigationCss = css`
 `;
 
 const mainCss = css`
-  height: 100%;
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   background-color: #f4f3ef;
 `;
