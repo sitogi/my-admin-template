@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
+import React, { FC, ReactElement } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
 import { Box, Center, Divider, Flex, IconButton, VStack } from '@chakra-ui/react';
 import { CalendarIcon, EmailIcon, HamburgerIcon, StarIcon } from '@chakra-ui/icons';
@@ -68,14 +68,14 @@ const appTitle = (hamburgerClicked: () => void) => (
   </Box>
 );
 
-const menuItem = (iconNode: any, label: string) => (
+const menuItem = (iconNode: ReactElement, label: string) => (
   <Box h="60px" css={hover}>
     <IconButton icon={iconNode} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" w="70px" h="70px" />
     {label}
   </Box>
 );
 
-const closedMenuItem = (iconNode: any) => (
+const closedMenuItem = (iconNode: ReactElement) => (
   <Box h="60px" css={hover}>
     <IconButton icon={iconNode} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" w="70px" h="70px" />
   </Box>
