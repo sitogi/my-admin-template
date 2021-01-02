@@ -15,10 +15,6 @@ const sidebarCss = css`
   font-weight: 400;
   color: #908d8c;
   background-color: #fff;
-
-  &:hover {
-    color: #242428;
-  }
 `;
 
 const sidebarSmallCss = css`
@@ -30,6 +26,13 @@ const sidebarSmallCss = css`
   font-weight: 400;
   color: #908d8c;
   background-color: #fff;
+`;
+
+const hover = css`
+  &:hover {
+    color: #242428;
+    cursor: pointer;
+  }
 `;
 
 const appTitleCss = css`
@@ -54,8 +57,10 @@ const appTitle = (hamburgerClicked: () => void) => (
           mt="5px"
           w="70px"
           h="70px"
+          css={hover}
+          size="lg"
         />
-        <Center>
+        <Center ml="5px" mt="5px">
           <p css={appTitleCss}>FB Admin</p>
         </Center>
       </Flex>
@@ -64,9 +69,15 @@ const appTitle = (hamburgerClicked: () => void) => (
 );
 
 const menuItem = (iconNode: any, label: string) => (
-  <Box h="60px">
+  <Box h="60px" css={hover}>
     <IconButton icon={iconNode} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" w="70px" h="70px" />
     {label}
+  </Box>
+);
+
+const closedMenuItem = (iconNode: any) => (
+  <Box h="60px" css={hover}>
+    <IconButton icon={iconNode} variant="o" colorScheme="teal" aria-label="Menu open" size="lg" w="70px" h="70px" />
   </Box>
 );
 
@@ -81,14 +92,11 @@ const closedAppTitle = (hamburgerClicked: () => void) => (
         onClick={(_event) => hamburgerClicked()}
         w="70px"
         h="70px"
+        mt="5px"
+        css={hover}
+        size="lg"
       />
     </VerticallyCentered>
-  </Box>
-);
-
-const closedMenuItem = (iconNode: any) => (
-  <Box h="60px">
-    <IconButton icon={iconNode} variant="o" colorScheme="teal" aria-label="Menu open" w="70px" h="70px" />
   </Box>
 );
 

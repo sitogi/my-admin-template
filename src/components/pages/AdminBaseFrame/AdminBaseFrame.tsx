@@ -8,6 +8,7 @@ import PageHeader from 'components/organisms/PageHeader/PageHeader';
 
 const containerCss = css`
   display: flex;
+  width: 100vw;
   height: 100vh;
 `;
 

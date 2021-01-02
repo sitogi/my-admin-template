@@ -1,14 +1,18 @@
 /** @jsx jsx */
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Box, Divider, Flex, Heading, Spacer } from '@chakra-ui/react';
+import { Box, Divider, Flex, Spacer } from '@chakra-ui/react';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
-import { HEADER_HEIGHT_PX, SIDEBAR_WIDTH_PX } from 'components/styleConstants';
-import LogoutButtonContainer from 'components/atoms/LogoutButton/LoginButtonContainer';
+import { HEADER_HEIGHT_PX } from 'components/styleConstants';
+import LogoutContainer from 'components/atoms/Logout/LogoutContainer';
 
 const headerCss = css`
-  width: calc(100vw - ${SIDEBAR_WIDTH_PX});
+  width: 100%;
   height: calc(${HEADER_HEIGHT_PX} + 0.5rem);
+  font-family: Muli, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #777;
   background-color: #f4f3ef;
 `;
 
@@ -16,14 +20,12 @@ const PageHeader: FC<{ currentPageTitle?: string }> = ({ currentPageTitle = 'Das
   <div css={headerCss}>
     <VerticallyCentered>
       <Flex>
-        <Box>
-          <Heading as="h3" size="lg" ml="30px">
-            {currentPageTitle}
-          </Heading>
+        <Box mt="5px" ml="30px">
+          {currentPageTitle}
         </Box>
         <Spacer />
         <Box mr="30px">
-          <LogoutButtonContainer />
+          <LogoutContainer />
         </Box>
       </Flex>
     </VerticallyCentered>
