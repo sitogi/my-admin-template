@@ -16,12 +16,12 @@ const headerCss = css`
   background-color: #f4f3ef;
 `;
 
-const PageHeader: FC<{ currentPageTitle?: string }> = ({ currentPageTitle = 'Dashboard' }) => (
+const PageHeader: FC<{ activePageTitle?: string }> = ({ activePageTitle = 'Dashboard' }) => (
   <div css={headerCss}>
     <VerticallyCentered>
       <Flex>
         <Box mt="5px" ml="30px">
-          {currentPageTitle}
+          {activePageTitle}
         </Box>
         <Spacer />
         <Box mr="30px">

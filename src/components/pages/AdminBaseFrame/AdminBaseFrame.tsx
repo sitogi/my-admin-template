@@ -2,10 +2,10 @@
 import React, { FC, Fragment } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
 import { Route, Switch } from 'react-router';
+import { Box, Grid, Table, TableCaption, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import { PATH_ROOT } from 'components/organisms/RouteManager/RouteManager';
 import SidebarContainer from 'components/templates/Sidebar/SidebarContainer';
-import PageHeader from 'components/organisms/PageHeader/PageHeader';
-import { Box, Grid, Table, TableCaption, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import PageHeaderContainer from 'components/organisms/PageHeader/PageHeaderContainer';
 
 const containerCss = css`
   display: flex;
@@ -106,7 +106,7 @@ const AdminBaseFrame: FC = () => {
           <SidebarContainer />
         </aside>
         <main css={mainCss}>
-          <PageHeader />
+          <PageHeaderContainer />
           <div css={contentsCss}>
             <Switch>
               <Route exact path={PATH_ROOT} component={DummyContent} />

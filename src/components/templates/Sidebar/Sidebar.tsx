@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Box, Center, Divider, Flex, Icon, IconButton, Text, VStack } from '@chakra-ui/react';
+import { Box, Center, Divider, Flex, IconButton, VStack } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { IconType } from 'react-icons';
 import { MdAttachMoney, MdDashboard, MdPersonOutline } from 'react-icons/md';
 import { HEADER_HEIGHT_PX, SIDEBAR_WIDTH_PX } from 'components/styleConstants';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
+import SidebarItemContainer from 'components/molecules/SidebarItem/SidebarItemContainer';
+import { PageTitle } from 'features/sidebar';
 
 const sidebarCss = css`
   flex: 0 0 auto;
@@ -70,17 +71,6 @@ const appTitle = (hamburgerClicked: () => void) => (
   </Box>
 );
 
-const menuItem = (icon: IconType, label?: string) => (
-  <Flex alignItems="center" h="60px" color="#9a9a9a" cursor="pointer" _hover={{ color: 'teal.400' }}>
-    <Icon as={icon} w={7} h={7} mt="6px" ml="20px" />
-    {label && (
-      <Text mt="7px" ml="15px" fontSize="14px" fontWeight="300">
-        {label}
-      </Text>
-    )}
-  </Flex>
-);
-
 const hamburgerButton = (hamburgerClicked: () => void) => (
   <Box h={HEADER_HEIGHT_PX}>
     <VerticallyCentered>
@@ -100,16 +90,20 @@ const hamburgerButton = (hamburgerClicked: () => void) => (
   </Box>
 );
 
-const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void }> = ({ visible, hamburgerClicked }) => {
+const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void; activePage: PageTitle }> = ({
+  visible,
+  hamburgerClicked,
+  activePage,
+}) => {
   if (visible) {
     return (
       <div css={sidebarCss}>
         <VStack align="stretch">
           {appTitle(hamburgerClicked)}
           <Divider />
-          {menuItem(MdDashboard, 'Dashboard')}
-          {menuItem(MdPersonOutline, 'Users')}
-          {menuItem(MdAttachMoney, 'Amount')}
+          <SidebarItemContainer icon={MdDashboard} active={activePage === 'Dashboard'} expanded label="Dashboard" />
+          <SidebarItemContainer icon={MdPersonOutline} active={activePage === 'Users'} expanded label="Users" />
+          <SidebarItemContainer icon={MdAttachMoney} active={activePage === 'Amount'} expanded label="Amount" />
         </VStack>
       </div>
     );
@@ -120,9 +114,14 @@ const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void }> = ({ visib
       <VStack align="stretch">
         {hamburgerButton(hamburgerClicked)}
         <Divider />
-        {menuItem(MdDashboard)}
-        {menuItem(MdPersonOutline)}
-        {menuItem(MdAttachMoney)}
+        <SidebarItemContainer
+          icon={MdDashboard}
+          active={activePage === 'Dashboard'}
+          expanded={false}
+          label="Dashboard"
+        />
+        <SidebarItemContainer icon={MdPersonOutline} active={activePage === 'Users'} expanded={false} label="Users" />
+        <SidebarItemContainer icon={MdAttachMoney} active={activePage === 'Amount'} expanded={false} label="Amount" />
       </VStack>
     </div>
   );
