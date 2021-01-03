@@ -6,16 +6,16 @@ import { PageTitle } from 'features/sidebar';
 export interface SidebarItemProps {
   icon: IconType;
   active: boolean;
-  expanded: boolean;
+  open: boolean;
   label: PageTitle;
   onClicked: (pageTitle: PageTitle) => void;
 }
 
-const SidebarItem: FC<SidebarItemProps> = ({ icon, active, expanded, label, onClicked }) => {
+const SidebarItem: FC<SidebarItemProps> = ({ icon, active, open, label, onClicked }) => {
   const iconAndLabel = (
     <Fragment>
       <Icon as={icon} w={7} h={7} mt="6px" ml="20px" />
-      {expanded && (
+      {open && (
         <Text mt="7px" ml="15px" fontSize="14px" fontWeight="300">
           {label}
         </Text>

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
+import React, { FC, Fragment } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
 import { Box, Center, Divider, Flex, IconButton, VStack } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
@@ -7,7 +7,6 @@ import { MdAttachMoney, MdDashboard, MdPersonOutline } from 'react-icons/md';
 import { HEADER_HEIGHT_PX, SIDEBAR_WIDTH_PX } from 'components/styleConstants';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
 import SidebarItemContainer from 'components/molecules/SidebarItem/SidebarItemContainer';
-import { PageTitle } from 'features/sidebar';
 
 const sidebarCss = css`
   flex: 0 0 auto;
@@ -90,20 +89,23 @@ const hamburgerButton = (hamburgerClicked: () => void) => (
   </Box>
 );
 
-const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void; activePage: PageTitle }> = ({
-  visible,
-  hamburgerClicked,
-  activePage,
-}) => {
-  if (visible) {
+const itemList = (
+  <Fragment>
+    <SidebarItemContainer icon={MdDashboard} label="Dashboard" />
+    <SidebarItemContainer icon={MdPersonOutline} label="Users" />
+    <SidebarItemContainer icon={MdAttachMoney} label="Amount" />
+  </Fragment>
+);
+
+const Sidebar: FC<{ open: boolean; hamburgerClicked: () => void }> = ({ open, hamburgerClicked }) => {
+  // TODO: 簡素化できる
+  if (open) {
     return (
       <div css={sidebarCss}>
         <VStack align="stretch">
           {appTitle(hamburgerClicked)}
           <Divider />
-          <SidebarItemContainer icon={MdDashboard} active={activePage === 'Dashboard'} expanded label="Dashboard" />
-          <SidebarItemContainer icon={MdPersonOutline} active={activePage === 'Users'} expanded label="Users" />
-          <SidebarItemContainer icon={MdAttachMoney} active={activePage === 'Amount'} expanded label="Amount" />
+          {itemList}
         </VStack>
       </div>
     );
@@ -114,14 +116,7 @@ const Sidebar: FC<{ visible: boolean; hamburgerClicked: () => void; activePage: 
       <VStack align="stretch">
         {hamburgerButton(hamburgerClicked)}
         <Divider />
-        <SidebarItemContainer
-          icon={MdDashboard}
-          active={activePage === 'Dashboard'}
-          expanded={false}
-          label="Dashboard"
-        />
-        <SidebarItemContainer icon={MdPersonOutline} active={activePage === 'Users'} expanded={false} label="Users" />
-        <SidebarItemContainer icon={MdAttachMoney} active={activePage === 'Amount'} expanded={false} label="Amount" />
+        {itemList}
       </VStack>
     </div>
   );

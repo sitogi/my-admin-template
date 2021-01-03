@@ -3,19 +3,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export type PageTitle = 'Dashboard' | 'Users' | 'Amount';
 
 export type SidebarState = {
-  visible: boolean;
+  open: boolean;
   activePage: PageTitle;
 };
 
-const initialState: SidebarState = { visible: true, activePage: 'Dashboard' };
+const initialState: SidebarState = { open: true, activePage: 'Dashboard' };
 
 export const sidebarSlice = createSlice({
   name: 'sidebar',
   initialState,
   reducers: {
-    setVisible: (state, action: PayloadAction<boolean>) => ({
+    setOpen: (state, action: PayloadAction<boolean>) => ({
       ...state,
-      visible: action.payload,
+      open: action.payload,
     }),
     setActivePage: (state, action: PayloadAction<PageTitle>) => ({
       ...state,

@@ -1,11 +1,10 @@
-/** @jsx jsx */
-import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import { jsx } from '@emotion/react';
+import React, { FC } from 'react';
 import { auth } from 'firebase/instances';
 import Logout from './Logout';
 
 const LogoutContainer: FC = () => {
   const logout = () => {
+    // TODO: ストアをリセットする処理を追加する
     void auth.signOut();
   };
 

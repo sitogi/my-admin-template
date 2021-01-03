@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import React, { FC, Fragment } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import { Box, Grid, Table, TableCaption, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
-import { PATH_ROOT } from 'components/organisms/RouteManager/RouteManager';
+import { PATH_AMOUNT, PATH_DASHBOARD, PATH_USERS } from 'components/organisms/RouteManager/RouteManager';
 import SidebarContainer from 'components/templates/Sidebar/SidebarContainer';
 import PageHeaderContainer from 'components/organisms/PageHeader/PageHeaderContainer';
 
@@ -29,7 +29,7 @@ const contentsCss = css`
   background-color: #f4f3ef;
 `;
 
-const DummyContent = () => (
+const dashboardDummy = () => (
   <Grid templateColumns="repeat(2, 1fr)" gap={6}>
     <Box bg="white" pt="10px" rounded="xl" boxShadow="xl">
       <Text ml={5} mb={5} mt={3} fontSize="20px" color="gray.400">
@@ -98,6 +98,10 @@ const DummyContent = () => (
   </Grid>
 );
 
+const userDummy = () => <p>Users</p>;
+
+const amountDummy = () => <p>Amount</p>;
+
 const AdminBaseFrame: FC = () => {
   return (
     <Fragment>
@@ -109,7 +113,10 @@ const AdminBaseFrame: FC = () => {
           <PageHeaderContainer />
           <div css={contentsCss}>
             <Switch>
-              <Route exact path={PATH_ROOT} component={DummyContent} />
+              <Route exact path={PATH_DASHBOARD} component={dashboardDummy} />
+              <Route exact path={PATH_USERS} component={userDummy} />
+              <Route exact path={PATH_AMOUNT} component={amountDummy} />
+              <Redirect to={PATH_DASHBOARD} />
             </Switch>
           </div>
         </main>

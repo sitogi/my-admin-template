@@ -1,14 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import Sidebar from 'components/templates/Sidebar/Sidebar';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { PageTitle } from 'features/sidebar';
+import { sidebarSlice } from 'features/sidebar';
 
 const SidebarContainer: FC = () => {
-  const [visible, setVisible] = useState<boolean>(true);
-  const activePage = useSelector<RootState, PageTitle>((state) => state.sidebar.activePage);
+  const dispatch = useDispatch();
+  const open = useSelector<RootState, boolean>((state) => state.sidebar.open);
+  const { setOpen } = sidebarSlice.actions;
 
-  return <Sidebar visible={visible} hamburgerClicked={() => setVisible(!visible)} activePage={activePage} />;
+  return <Sidebar open={open} hamburgerClicked={() => dispatch(setOpen(!open))} />;
 };
 
 export default SidebarContainer;
