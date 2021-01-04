@@ -17,6 +17,9 @@ const sidebarCss = css`
   font-weight: 400;
   color: #908d8c;
   background-color: #fff;
+  transition-delay: 0s;
+  transition-timing-function: ease;
+  transition-duration: 100ms;
 `;
 
 const sidebarSmallCss = css`
@@ -28,6 +31,9 @@ const sidebarSmallCss = css`
   font-weight: 400;
   color: #908d8c;
   background-color: #fff;
+  transition-delay: 0s;
+  transition-timing-function: ease;
+  transition-duration: 100ms;
 `;
 
 const hover = css`
