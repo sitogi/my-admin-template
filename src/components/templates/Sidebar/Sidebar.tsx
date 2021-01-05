@@ -97,9 +97,9 @@ const hamburgerButton = (hamburgerClicked: () => void) => (
 
 const itemList = (
   <Fragment>
-    <SidebarItemContainer icon={MdDashboard} label="Dashboard" />
-    <SidebarItemContainer icon={MdPersonOutline} label="Users" />
-    <SidebarItemContainer icon={MdAttachMoney} label="Amount" />
+    <SidebarItemContainer icon={MdDashboard} label="dashboard" />
+    <SidebarItemContainer icon={MdPersonOutline} label="users" />
+    <SidebarItemContainer icon={MdAttachMoney} label="amount" />
   </Fragment>
 );
 

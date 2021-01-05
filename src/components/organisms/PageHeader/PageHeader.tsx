@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Box, Divider, Flex, Spacer } from '@chakra-ui/react';
+import { Box, Divider, Flex, Spacer, Text } from '@chakra-ui/react';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
 import { HEADER_HEIGHT_PX } from 'components/styleConstants';
 import LogoutContainer from 'components/atoms/Logout/LogoutContainer';
@@ -21,7 +21,7 @@ const PageHeader: FC<{ activePageTitle?: string }> = ({ activePageTitle = 'Dashb
     <VerticallyCentered>
       <Flex>
         <Box mt="5px" ml="30px">
-          {activePageTitle}
+          <Text textTransform="capitalize">{activePageTitle}</Text>
         </Box>
         <Spacer />
         <Box mr="30px">

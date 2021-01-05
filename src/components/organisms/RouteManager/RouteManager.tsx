@@ -4,9 +4,9 @@ import LoginContainer from 'components/pages/Login/LoginContainer';
 
 export const PATH_ROOT = '/';
 export const PATH_LOGIN = '/login';
-export const PATH_DASHBOARD = '/Dashboard'; // TODO: small case
-export const PATH_USERS = '/Users'; // TODO: small case
-export const PATH_AMOUNT = '/Amount'; // TODO: small case
+export const PATH_DASHBOARD = '/dashboard';
+export const PATH_USERS = '/users';
+export const PATH_AMOUNT = '/amount';
 
 const RouteManager: FC = () => (
   <>

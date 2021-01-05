@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type PageTitle = 'Dashboard' | 'Users' | 'Amount';
+export type PageTitle = 'dashboard' | 'users' | 'amount';
 
 export type SidebarState = {
   open: boolean;
   activePage: PageTitle;
 };
 
-const initialState: SidebarState = { open: true, activePage: 'Dashboard' };
+const initialState: SidebarState = { open: true, activePage: 'dashboard' };
 
 export const sidebarSlice = createSlice({
   name: 'sidebar',

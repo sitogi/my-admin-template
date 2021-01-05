@@ -16,7 +16,7 @@ const SidebarItem: FC<SidebarItemProps> = ({ icon, active, open, label, onClicke
     <Fragment>
       <Icon as={icon} w={7} h={7} mt="6px" ml="20px" />
       {open && (
-        <Text mt="7px" ml="15px" fontSize="14px" fontWeight="300">
+        <Text mt="7px" ml="15px" fontSize="14px" fontWeight="300" textTransform="capitalize">
           {label}
         </Text>
       )}
