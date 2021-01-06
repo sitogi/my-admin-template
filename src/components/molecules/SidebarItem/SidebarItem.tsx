@@ -32,14 +32,7 @@ const SidebarItem: FC<SidebarItemProps> = ({ icon, active, open, label, onClicke
   }
 
   return (
-    <Flex
-      alignItems="center"
-      h="60px"
-      color="#9a9a9a"
-      cursor="pointer"
-      _hover={{ color: 'teal.400' }}
-      onClick={() => onClicked(label)}
-    >
+    <Flex alignItems="center" h="60px" cursor="pointer" _hover={{ color: 'teal.400' }} onClick={() => onClicked(label)}>
       {iconAndLabel}
     </Flex>
   );

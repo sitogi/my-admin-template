@@ -5,6 +5,7 @@ import { Box, Divider, Flex, Spacer, Text } from '@chakra-ui/react';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
 import { HEADER_HEIGHT_PX } from 'components/styleConstants';
 import LogoutContainer from 'components/atoms/Logout/LogoutContainer';
+import ColorModeToggleContainer from 'components/atoms/ColorModeToggle/ColorModeToggleContainer';
 
 const headerCss = css`
   width: 100%;
@@ -24,6 +25,7 @@ const PageHeader: FC<{ activePageTitle?: string }> = ({ activePageTitle = 'Dashb
           <Text textTransform="capitalize">{activePageTitle}</Text>
         </Box>
         <Spacer />
+        <ColorModeToggleContainer />
         <Box mr="30px">
           <LogoutContainer />
         </Box>
