@@ -7,6 +7,7 @@ import { HEADER_HEIGHT_PX } from 'components/styleConstants';
 import { PATH_AMOUNT, PATH_DASHBOARD, PATH_USERS } from 'components/organisms/RouteManager/RouteManager';
 import SidebarContainer from 'components/templates/Sidebar/SidebarContainer';
 import PageHeaderContainer from 'components/organisms/PageHeader/PageHeaderContainer';
+import UserListContainer from 'components/templates/UserList/UserListContainer';
 
 const containerCss = css`
   display: flex;
@@ -102,8 +103,6 @@ const dashboardDummy = () => (
   </Box>
 );
 
-const userDummy = () => <p>Users</p>;
-
 const amountDummy = () => <p>Amount</p>;
 
 const AdminBaseFrame: FC = () => {
@@ -117,7 +116,7 @@ const AdminBaseFrame: FC = () => {
         <div css={contentsCss}>
           <Switch>
             <Route exact path={PATH_DASHBOARD} component={dashboardDummy} />
-            <Route exact path={PATH_USERS} component={userDummy} />
+            <Route exact path={PATH_USERS} component={UserListContainer} />
             <Route exact path={PATH_AMOUNT} component={amountDummy} />
             <Redirect to={PATH_DASHBOARD} />
           </Switch>

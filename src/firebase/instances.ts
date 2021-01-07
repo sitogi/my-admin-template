@@ -1,9 +1,9 @@
 import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
-import 'firebase/storage';
 import 'firebase/analytics';
-import 'firebase/database';
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/functions';
+import 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCMXFEkdHKrVNpBXhoGbYGKO3cvDUDyR1k',
@@ -21,4 +21,7 @@ firebase.analytics();
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+export const functions = firebase.app().functions('asia-northeast1');
+export const callListAuthUsers = functions.httpsCallable('listAuthenticationUsers');
+
 export default firebase;
