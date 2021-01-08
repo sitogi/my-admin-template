@@ -9,13 +9,13 @@ const checkAuthorization = (context: CallableContext) => {
     functions.logger.error('context or context.auth is undefined.');
     throw new HttpsError('unauthenticated', 'unauthenticated.');
   }
-}
+};
 
 exports.listAuthenticationUsers = functions.region('asia-northeast1').https.onCall(async (data, context) => {
   checkAuthorization(context);
 
   const listUsersResult = await admin.auth().listUsers();
-  const users = listUsersResult.users.map(u => u.toJSON());
+  const users = listUsersResult.users.map((u) => u.toJSON());
 
-  return { users: users };
+  return { users };
 });
