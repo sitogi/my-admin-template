@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type PageTitle = 'dashboard' | 'users' | 'amount';
+export type PageTitle = 'dashboard' | 'users' | 'amount' | 'todo';
 
 export type SidebarState = {
   open: boolean;

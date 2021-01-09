@@ -4,10 +4,11 @@ import { css, jsx } from '@emotion/react';
 import { Redirect, Route, Switch } from 'react-router';
 import { Box, Grid, Table, TableCaption, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import { HEADER_HEIGHT_PX } from 'components/styleConstants';
-import { PATH_AMOUNT, PATH_DASHBOARD, PATH_USERS } from 'components/organisms/RouteManager/RouteManager';
+import { PATH_AMOUNT, PATH_DASHBOARD, PATH_TODO, PATH_USERS } from 'components/organisms/RouteManager/RouteManager';
 import SidebarContainer from 'components/templates/Sidebar/SidebarContainer';
 import PageHeaderContainer from 'components/organisms/PageHeader/PageHeaderContainer';
 import UserListContainer from 'components/templates/UserList/UserListContainer';
+import TodoList from 'components/pages/Todo';
 
 const containerCss = css`
   display: flex;
@@ -118,6 +119,7 @@ const AdminBaseFrame: FC = () => {
             <Route exact path={PATH_DASHBOARD} component={dashboardDummy} />
             <Route exact path={PATH_USERS} component={UserListContainer} />
             <Route exact path={PATH_AMOUNT} component={amountDummy} />
+            <Route exact path={PATH_TODO} component={TodoList} />
             <Redirect to={PATH_DASHBOARD} />
           </Switch>
         </div>

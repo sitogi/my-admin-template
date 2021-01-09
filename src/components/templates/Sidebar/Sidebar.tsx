@@ -3,7 +3,7 @@ import React, { FC, Fragment } from 'react'; // eslint-disable-line @typescript-
 import { css, jsx } from '@emotion/react';
 import { Box, Center, Divider, Flex, IconButton, VStack } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { MdAttachMoney, MdDashboard, MdPersonOutline } from 'react-icons/md';
+import { MdAttachMoney, MdDashboard, MdList, MdPersonOutline } from 'react-icons/md';
 import { HEADER_HEIGHT_PX, SIDEBAR_WIDTH_PX } from 'components/styleConstants';
 import VerticallyCentered from 'components/molecules/VerticalyCentered/VertialyCentered';
 import SidebarItemContainer from 'components/molecules/SidebarItem/SidebarItemContainer';
@@ -100,6 +100,7 @@ const itemList = (
     <SidebarItemContainer icon={MdDashboard} label="dashboard" />
     <SidebarItemContainer icon={MdPersonOutline} label="users" />
     <SidebarItemContainer icon={MdAttachMoney} label="amount" />
+    <SidebarItemContainer icon={MdList} label="todo" />
   </Fragment>
 );
 
