@@ -37,23 +37,23 @@ export interface ContainerState {
 }
 
 // ごく普通の関数コンポーネント
-const Container: FC = () => {
+const Board: FC = () => {
   // state の初期値に Item のリストを書いている
   const [cards, setCards] = useState([
     {
-      id: 1,
+      id: '1',
       text: 'Write a cool JS library',
     },
     {
-      id: 2,
+      id: '2',
       text: 'Make it generic enough',
     },
     {
-      id: 3,
+      id: '3',
       text: 'Write README',
     },
     {
-      id: 4,
+      id: '4',
       text: 'Create some examples',
     },
   ]);
@@ -78,13 +78,13 @@ const Container: FC = () => {
     [cards],
   );
 
-  const renderCard = (card: { id: number; text: string }, index: number) => {
+  const renderCard = (card: { id: string; text: string }, index: number) => {
     return <Card key={card.id} index={index} id={card.id} text={card.text} moveCard={moveCard} />;
   };
 
   const addCard = () => {
     const newCards = cards.slice();
-    newCards.push({ id: cards.length + 1, text: '' });
+    newCards.push({ id: `${cards.length + 1}`, text: '' });
     setCards(newCards);
   };
 
@@ -107,4 +107,4 @@ const Container: FC = () => {
   );
 };
 
-export default Container;
+export default Board;
