@@ -3,27 +3,9 @@
 import React, { useState, useCallback, FC } from 'react';
 import { jsx, css } from '@emotion/react';
 import update from 'immutability-helper';
-import { Button, Text } from '@chakra-ui/react';
+import { Box, Flex, IconButton, Spacer, Text } from '@chakra-ui/react';
+import { MdAdd } from 'react-icons/md';
 import Card from './Card';
-
-const listBaseCss = css`
-  width: 350px;
-  padding: 20px;
-  background-color: lightgreen;
-  border-radius: 10px;
-`;
-const listHeaderCss = css`
-  width: 90%;
-  padding: 10px 10px 10px 3px;
-  margin: auto auto auto 0;
-`;
-const listContentsCss = css`
-  padding: 20px;
-`;
-const addButtonCss = css`
-  width: 60%;
-  margin: 0 auto;
-`;
 
 // カードの中身を表す interface
 export interface Item {
@@ -89,21 +71,16 @@ const Board: FC = () => {
   };
 
   return (
-    <div>
-      <div css={listBaseCss}>
-        <div css={listHeaderCss}>
-          <Text size="big" color="green">
-            TODO List
-          </Text>
-        </div>
-        <div css={listContentsCss}>{cards.map((card, i) => renderCard(card, i))}</div>
-        <div css={addButtonCss}>
-          <Button fluid color="blue" onClick={addCard}>
-            Add
-          </Button>
-        </div>
-      </div>
-    </div>
+    <Box w="350px" p="20px" bg="White" rounded="xl" boxShadow="xl">
+      <Flex pb="5px">
+        <Text pt="5px" fontSize="20px" color="gray.400">
+          TODO List
+        </Text>
+        <Spacer />
+        <IconButton aria-label="Add todo" icon={<MdAdd />} onClick={() => addCard()} />
+      </Flex>
+      {cards.map((card, i) => renderCard(card, i))}
+    </Box>
   );
 };
 

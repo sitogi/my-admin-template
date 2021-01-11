@@ -2,16 +2,9 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useRef } from 'react';
 import { jsx, css } from '@emotion/react';
+import { Text } from '@chakra-ui/react';
 import { useDrag, useDrop, DropTargetMonitor, XYCoord } from 'react-dnd';
 import ItemTypes from './ItemTypes';
-
-const style = css`
-  padding: 30px 10px;
-  margin-bottom: 30px;
-  cursor: move;
-  background-color: white;
-  border: 2px dashed gray;
-`;
 
 export interface CardProps {
   id: string;
@@ -80,9 +73,20 @@ const Card: React.FC<CardProps> = ({ id, text, index, moveCard }) => {
 
   return (
     // eslint-disable-next-line object-shorthand
-    <div ref={ref} css={{ ...style, opacity: opacity }}>
+    <Text
+      ref={ref}
+      m="10px"
+      p="10px"
+      h="80px"
+      cursor="move"
+      bg="orange.50"
+      opacity={opacity}
+      rounded="xl"
+      border="1px"
+      borderColor="gray.200"
+    >
       {text}
-    </div>
+    </Text>
   );
 };
 
