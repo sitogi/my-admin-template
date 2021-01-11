@@ -1,7 +1,4 @@
-/** @jsx jsx */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useRef } from 'react';
-import { jsx, css } from '@emotion/react';
 import { Text } from '@chakra-ui/react';
 import { useDrag, useDrop, DropTargetMonitor, XYCoord } from 'react-dnd';
 import ItemTypes from './ItemTypes';

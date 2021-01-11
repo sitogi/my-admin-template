@@ -1,7 +1,4 @@
-/** @jsx jsx */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useState, useCallback, FC } from 'react';
-import { jsx, css } from '@emotion/react';
 import update from 'immutability-helper';
 import { Box, Flex, IconButton, Spacer, Text } from '@chakra-ui/react';
 import { MdAdd } from 'react-icons/md';
