@@ -1,23 +1,8 @@
-import React, { useState, useCallback, FC } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import update from 'immutability-helper';
-import { Box, Flex, IconButton, Spacer, Text } from '@chakra-ui/react';
-import { MdAdd } from 'react-icons/md';
-import Card from './Card';
+import List from './List';
 
-// カードの中身を表す interface
-export interface Item {
-  id: number;
-  text: string;
-}
-
-// このコンポーネントの State を表す interface
-export interface ContainerState {
-  cards: Item[];
-}
-
-// ごく普通の関数コンポーネント
-const Board: FC = () => {
-  // state の初期値に Item のリストを書いている
+const ListContainer: FC = () => {
   const [cards, setCards] = useState([
     {
       id: '1',
@@ -57,28 +42,13 @@ const Board: FC = () => {
     [cards],
   );
 
-  const renderCard = (card: { id: string; text: string }, index: number) => {
-    return <Card key={card.id} index={index} id={card.id} text={card.text} moveCard={moveCard} />;
-  };
-
   const addCard = () => {
     const newCards = cards.slice();
     newCards.push({ id: `${cards.length + 1}`, text: '' });
     setCards(newCards);
   };
 
-  return (
-    <Box w="350px" p="20px" bg="White" rounded="xl" boxShadow="xl">
-      <Flex pb="5px">
-        <Text pt="5px" fontSize="20px" color="gray.400">
-          TODO List
-        </Text>
-        <Spacer />
-        <IconButton aria-label="Add todo" icon={<MdAdd />} onClick={() => addCard()} />
-      </Flex>
-      {cards.map((card, i) => renderCard(card, i))}
-    </Box>
-  );
+  return <List listTitle="TODO" cards={cards} addCardClicked={addCard} moveCard={moveCard} />;
 };
 
-export default Board;
+export default ListContainer;
