@@ -1,37 +1,12 @@
-/** @jsx jsx */
-import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import { css, jsx } from '@emotion/react';
+import React, { FC } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import { Box, Grid, Table, TableCaption, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Flex, Grid, Table, TableCaption, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import { HEADER_HEIGHT_PX } from 'components/styleConstants';
 import { PATH_AMOUNT, PATH_DASHBOARD, PATH_TODO, PATH_USERS } from 'components/organisms/RouteManager/RouteManager';
 import SidebarContainer from 'components/templates/Sidebar/SidebarContainer';
 import PageHeaderContainer from 'components/organisms/PageHeader/PageHeaderContainer';
 import UserListContainer from 'components/templates/UserList/UserListContainer';
 import TodoList from 'components/pages/Todo';
-
-const containerCss = css`
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-`;
-
-const navigationCss = css`
-  flex: 0 0 auto;
-`;
-
-const mainCss = css`
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  background-color: #f4f3ef;
-`;
-
-const contentsCss = css`
-  height: calc(100vh - ${HEADER_HEIGHT_PX} - 40px);
-  margin: 20px 20px 0 20px;
-  background-color: #f4f3ef;
-`;
 
 const dashboardDummy = () => (
   <Box overflowY="auto" h="100%">
@@ -108,13 +83,13 @@ const amountDummy = () => <p>Amount</p>;
 
 const AdminBaseFrame: FC = () => {
   return (
-    <div css={containerCss}>
-      <aside css={navigationCss}>
+    <Flex w="100vw" h="100vh">
+      <Box as="aside" flex="0 0 auto">
         <SidebarContainer />
-      </aside>
-      <main css={mainCss}>
+      </Box>
+      <Box as="main" w="100%" h="100%" m="0 auto" bg="#f4f3ef">
         <PageHeaderContainer />
-        <div css={contentsCss}>
+        <Box css={{ height: `calc(100vh - ${HEADER_HEIGHT_PX} - 40px)` }} m="20px 20px 0 20px" bg="#f4f3ef">
           <Switch>
             <Route exact path={PATH_DASHBOARD} component={dashboardDummy} />
             <Route exact path={PATH_USERS} component={UserListContainer} />
@@ -122,9 +97,9 @@ const AdminBaseFrame: FC = () => {
             <Route exact path={PATH_TODO} component={TodoList} />
             <Redirect to={PATH_DASHBOARD} />
           </Switch>
-        </div>
-      </main>
-    </div>
+        </Box>
+      </Box>
+    </Flex>
   );
 };
 

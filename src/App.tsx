@@ -1,22 +1,17 @@
-/** @jsx jsx */
-import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import { css, jsx } from '@emotion/react';
+import React, { FC } from 'react';
+import { Box } from '@chakra-ui/react';
 import Auth from 'components/organisms/Auth/Auth';
 import RouteManager from 'components/organisms/RouteManager/RouteManager';
 import AdminBaseFrame from 'components/pages/AdminBaseFrame/AdminBaseFrame';
 
-const baseCss = css`
-  height: 100vh;
-`;
-
 const App: FC = () => {
   return (
-    <div css={baseCss}>
+    <Box h="100vh">
       <RouteManager />
       <Auth>
         <AdminBaseFrame />
       </Auth>
-    </div>
+    </Box>
   );
 };
 

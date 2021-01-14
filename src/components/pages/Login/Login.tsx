@@ -1,6 +1,4 @@
-/** @jsx jsx */
-import React, { FC } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
-import { css, jsx } from '@emotion/react';
+import React, { FC } from 'react';
 import { Alert, AlertIcon, Button, Center, Flex, FormControl, FormLabel, Input, Spacer } from '@chakra-ui/react';
 
 interface LoginProps {
@@ -10,18 +8,13 @@ interface LoginProps {
   handleOnSubmit: () => void;
 }
 
-const containerCss = css`
-  background-color: #f4f3ef;
-`;
-
 const Login: FC<LoginProps> = ({ errorMsg, handleOnChangeEmail, handleOnChangePassword, handleOnSubmit }) => {
   return (
-    <Flex css={containerCss} direction="column" h="100vh" w="100vw" align="center">
+    <Flex bg="#f4f3ef" direction="column" h="100vh" w="100vw" align="center">
       <Spacer />
       {errorMsg && (
         <Center w="800px">
           <Alert status="error">
-            {' '}
             <AlertIcon />
             {errorMsg}
           </Alert>

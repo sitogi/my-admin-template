@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { FC, Fragment } from 'react'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { css, jsx } from '@emotion/react';
-import { Box, Center, Divider, Flex, IconButton, VStack } from '@chakra-ui/react';
+import { Box, Center, Divider, Flex, IconButton, Text, VStack } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { MdAttachMoney, MdDashboard, MdList, MdPersonOutline } from 'react-icons/md';
 import { HEADER_HEIGHT_PX, SIDEBAR_WIDTH_PX } from 'components/styleConstants';
@@ -36,22 +36,6 @@ const sidebarSmallCss = css`
   transition-duration: 100ms;
 `;
 
-const hover = css`
-  &:hover {
-    color: #242428;
-    cursor: pointer;
-  }
-`;
-
-const appTitleCss = css`
-  width: 100%;
-  font-family: Muli, Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 300;
-  color: #908d8c;
-  text-align: center;
-`;
-
 const appTitle = (hamburgerClicked: () => void) => (
   <Box h={HEADER_HEIGHT_PX}>
     <VerticallyCentered>
@@ -65,11 +49,20 @@ const appTitle = (hamburgerClicked: () => void) => (
           mt="5px"
           w="70px"
           h="70px"
-          css={hover}
           size="lg"
+          _hover={{ color: 'teal.400' }}
         />
         <Center ml="5px" mt="5px">
-          <p css={appTitleCss}>FB Admin</p>
+          <Text
+            w="100%"
+            fontFamily="Muli, Helvetica, Arial, sans-serif"
+            fontSize="20px"
+            fontWeight="300"
+            color="#908d8c"
+            textAlign="center"
+          >
+            FB Admin
+          </Text>
         </Center>
       </Flex>
     </VerticallyCentered>
@@ -88,8 +81,8 @@ const hamburgerButton = (hamburgerClicked: () => void) => (
         w="70px"
         h="70px"
         mt="5px"
-        css={hover}
         size="lg"
+        _hover={{ color: 'teal.400' }}
       />
     </VerticallyCentered>
   </Box>
@@ -108,24 +101,24 @@ const Sidebar: FC<{ open: boolean; hamburgerClicked: () => void }> = ({ open, ha
   // TODO: 簡素化できる
   if (open) {
     return (
-      <div css={sidebarCss}>
+      <Box css={sidebarCss}>
         <VStack align="stretch">
           {appTitle(hamburgerClicked)}
           <Divider />
           {itemList}
         </VStack>
-      </div>
+      </Box>
     );
   }
 
   return (
-    <div css={sidebarSmallCss}>
+    <Box css={sidebarSmallCss}>
       <VStack align="stretch">
         {hamburgerButton(hamburgerClicked)}
         <Divider />
         {itemList}
       </VStack>
-    </div>
+    </Box>
   );
 };
 
