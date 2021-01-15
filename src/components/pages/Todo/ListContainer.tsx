@@ -1,52 +1,66 @@
-import React, { FC, useCallback, useState } from 'react';
-import update from 'immutability-helper';
-import List from './List';
+import React, { FC } from 'react';
+import { useCollectionData } from '@lukaselmer/react-firebase-hooks/firestore';
+import firebase, { firestore } from 'firebase/instances';
+import List from 'components/pages/Todo/List';
+
+// interface CardList {
+//   id: string;
+//   order: string[];
+// }
+
+interface Card {
+  id: string;
+  text: string;
+}
 
 const ListContainer: FC = () => {
-  const [cards, setCards] = useState([
+  const [cards, cardLoading, cardError] = useCollectionData<Card>(
+    firestore.collection(`lists/OqhrgZIOBO6ElhcEXXEf/cards`),
     {
-      id: '1',
-      text: 'Write a cool JS library',
+      idField: 'id',
     },
-    {
-      id: '2',
-      text: 'Make it generic enough',
-    },
-    {
-      id: '3',
-      text: 'Write README',
-    },
-    {
-      id: '4',
-      text: 'Create some examples',
-    },
-  ]);
-
-  // カード移動時の処理
-  // 多分ホバー中にめちゃくちゃレンダリングされるから、 useCallback を使ったり update を使ったりして負荷を減らしてる
-  const moveCard = useCallback(
-    // ドラッグしたアイテムのインデックスと、現在ホバー中の位置にあるインデックス？
-    (dragIndex: number, hoverIndex: number) => {
-      const dragCard = cards[dragIndex];
-      // ドラッグしたカードとホバー中のインデックスの位置からアイテム配列の順序を並び替えている
-      // update に関しては、おそらく新規配列をわざわざ作成してから置き換える、ということを省けるライブラリなのだろう
-      setCards(
-        update(cards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, dragCard],
-          ],
-        }),
-      );
-    },
-    [cards],
   );
+  // const [listDoc] = useDocumentData<CardList>(firestore.doc(`lists/OqhrgZIOBO6ElhcEXXEf`));
 
-  const addCard = () => {
-    const newCards = cards.slice();
-    newCards.push({ id: `${cards.length + 1}`, text: '' });
-    setCards(newCards);
+  // const moveCard = useCallback(
+  //   (dragIndex: number, hoverIndex: number) => {
+  //     if (!cards || !displayedCards) {
+  //       return;
+  //     }
+  //     const dragCard = displayedCards[dragIndex];
+  //     setDisplayedCards(
+  //       update(displayedCards, {
+  //         $splice: [
+  //           [dragIndex, 1],
+  //           [hoverIndex, 0, dragCard],
+  //         ],
+  //       }),
+  //     );
+  //   },
+  //   [cards],
+  // );
+
+  const moveCard = (dragIndex: number, hoverIndex: number) => {
+    console.log(dragIndex, hoverIndex);
   };
+
+  const addCard = async () => {
+    const addedCardRef = await firestore.collection('lists/OqhrgZIOBO6ElhcEXXEf/cards').add({ text: '' });
+    const docRef = firestore.doc(`lists/OqhrgZIOBO6ElhcEXXEf`);
+    await docRef.update({ order: firebase.firestore.FieldValue.arrayUnion(addedCardRef.id) });
+  };
+
+  if (cardError) {
+    console.log('card loading error');
+
+    return <div />;
+  }
+
+  if (!cards || cardLoading) {
+    return <div />;
+  }
+
+  // TODO: sort cards
 
   return <List listTitle="TODO" cards={cards} addCardClicked={addCard} moveCard={moveCard} />;
 };
