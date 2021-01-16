@@ -1,30 +1,31 @@
 import React, { FC, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import update from 'immutability-helper';
 import firebase, { firestore } from 'firebase/instances';
 import { RootState } from 'store';
-import { Card, todoListSlice } from 'features/todoList';
+import { Card } from 'features/todoList';
 import List from 'components/pages/Todo/List';
 
+// TODO: The following warning occurs
+// Cannot update a component (`ListContainer`) while rendering a different component (`ListListener`). To locate the bad setState() call inside `ListListener`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
 const ListContainer: FC = () => {
-  const dispatch = useDispatch();
   const cards = useSelector<RootState, Card[]>((state) => state.todoList.cards);
 
   const moveCard = useCallback(
-    (dragIndex: number, hoverIndex: number) => {
+    async (dragIndex: number, hoverIndex: number) => {
       const dragCard = cards[dragIndex];
-      dispatch(
-        todoListSlice.actions.setCards(
-          update(cards, {
-            $splice: [
-              [dragIndex, 1],
-              [hoverIndex, 0, dragCard],
-            ],
-          }),
-        ),
-      );
+      const afterMoved = update(cards, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, dragCard],
+        ],
+      });
+
+      // TODO: Firestore traffic optimization
+      const docRef = firestore.doc(`lists/OqhrgZIOBO6ElhcEXXEf`);
+      await docRef.update({ order: afterMoved.map((c) => c.id) }); // eslint-disable-line import/no-named-as-default-member
     },
-    [cards, dispatch],
+    [cards],
   );
 
   const addCard = async () => {
