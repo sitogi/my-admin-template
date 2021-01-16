@@ -6,7 +6,7 @@ import { PATH_AMOUNT, PATH_DASHBOARD, PATH_TODO, PATH_USERS } from 'components/o
 import SidebarContainer from 'components/templates/Sidebar/SidebarContainer';
 import PageHeaderContainer from 'components/organisms/PageHeader/PageHeaderContainer';
 import UserListContainer from 'components/templates/UserList/UserListContainer';
-import TodoList from 'components/pages/Todo';
+import BoardContainer from 'components/pages/Todo/BoardContainer';
 
 const dashboardDummy = () => (
   <Box overflowY="auto" h="100%">
@@ -94,7 +94,7 @@ const AdminBaseFrame: FC = () => {
             <Route exact path={PATH_DASHBOARD} component={dashboardDummy} />
             <Route exact path={PATH_USERS} component={UserListContainer} />
             <Route exact path={PATH_AMOUNT} component={amountDummy} />
-            <Route exact path={PATH_TODO} component={TodoList} />
+            <Route exact path={PATH_TODO} component={BoardContainer} />
             <Redirect to={PATH_DASHBOARD} />
           </Switch>
         </Box>

@@ -4,7 +4,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import ListContainer from './ListContainer';
 
-const TodoList: FC = () => (
+const Board: FC = () => (
   <Box overflowY="auto" h="100%">
     <DndProvider backend={HTML5Backend}>
       <ListContainer />
@@ -12,4 +12,4 @@ const TodoList: FC = () => (
   </Box>
 );
 
-export default TodoList;
+export default Board;

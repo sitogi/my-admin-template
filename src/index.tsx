@@ -7,10 +7,12 @@ import { ChakraProvider } from '@chakra-ui/react';
 import * as serviceWorker from 'serviceWorker';
 import App from 'App';
 import { sidebarSlice } from 'features/sidebar';
+import { todoListSlice } from 'features/todoList';
 
 const store = configureStore({
   reducer: combineReducers({
     sidebar: sidebarSlice.reducer,
+    todoList: todoListSlice.reducer,
   }),
 });
 
