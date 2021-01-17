@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useCollectionData, useDocumentData } from '@lukaselmer/react-firebase-hooks/firestore';
 import { firestore } from 'firebase/instances';
 import { useDispatch } from 'react-redux';
@@ -25,9 +25,11 @@ const ListListener: FC = () => {
   });
   const [cardList] = useDocumentData<CardList>(firestore.doc(`lists/OqhrgZIOBO6ElhcEXXEf`));
 
-  if (cards && cardList) {
-    dispatch(todoListSlice.actions.setCards(sortCards(cards, cardList.order)));
-  }
+  useEffect(() => {
+    if (cards && cardList) {
+      dispatch(todoListSlice.actions.setCards(sortCards(cards, cardList.order)));
+    }
+  }, [cards, cardList, dispatch]);
 
   return <></>;
 };

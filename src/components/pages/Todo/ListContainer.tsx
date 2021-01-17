@@ -6,8 +6,6 @@ import { RootState } from 'store';
 import { Card } from 'features/todoList';
 import List from 'components/pages/Todo/List';
 
-// TODO: The following warning occurs
-// Cannot update a component (`ListContainer`) while rendering a different component (`ListListener`). To locate the bad setState() call inside `ListListener`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
 const ListContainer: FC = () => {
   const cards = useSelector<RootState, Card[]>((state) => state.todoList.cards);
 
