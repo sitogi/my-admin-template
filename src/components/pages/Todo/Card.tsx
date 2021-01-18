@@ -69,7 +69,6 @@ const Card: React.FC<CardProps> = ({ id, text, index, moveCard }) => {
   drag(drop(ref));
 
   return (
-    // eslint-disable-next-line object-shorthand
     <Text
       ref={ref}
       m="10px"

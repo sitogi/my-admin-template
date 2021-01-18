@@ -25,10 +25,5 @@ export const todoListSlice = createSlice({
       ...state,
       cards: action.payload,
     }),
-    // TODO: Remove if it will be unused
-    setOrder: (state, action: PayloadAction<string[]>) => ({
-      ...state,
-      order: action.payload,
-    }),
   },
 });
