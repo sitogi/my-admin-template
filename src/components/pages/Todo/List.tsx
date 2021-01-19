@@ -13,10 +13,9 @@ export interface ListProps {
   listTitle: string;
   addCardClicked: () => void;
   cards: Item[];
-  moveCard: (dragIndex: number, hoverIndex: number) => void;
 }
 
-const List: FC<ListProps> = ({ listTitle, addCardClicked, cards, moveCard }) => {
+const List: FC<ListProps> = ({ listTitle, addCardClicked, cards }) => {
   return (
     <Box w="350px" p="20px" bg="White" rounded="xl" boxShadow="xl">
       <Flex pb="5px">
@@ -27,7 +26,7 @@ const List: FC<ListProps> = ({ listTitle, addCardClicked, cards, moveCard }) => 
         <IconButton aria-label="Add todo" icon={<MdAdd />} onClick={() => addCardClicked()} />
       </Flex>
       {cards.map((card, i) => (
-        <Card key={card.id} index={i} id={card.id} text={card.text} moveCard={moveCard} />
+        <Card key={card.id} index={i} id={card.id} text={card.text} />
       ))}
     </Box>
   );
