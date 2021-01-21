@@ -2,11 +2,18 @@ import React, { FC } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import { Box, Flex, Grid, Table, TableCaption, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import { HEADER_HEIGHT_PX } from 'components/styleConstants';
-import { PATH_AMOUNT, PATH_DASHBOARD, PATH_TODO, PATH_USERS } from 'components/organisms/RouteManager/RouteManager';
+import {
+  PATH_AMOUNT,
+  PATH_DASHBOARD,
+  PATH_DND,
+  PATH_TODO,
+  PATH_USERS,
+} from 'components/organisms/RouteManager/RouteManager';
 import SidebarContainer from 'components/templates/Sidebar/SidebarContainer';
 import PageHeaderContainer from 'components/organisms/PageHeader/PageHeaderContainer';
 import UserListContainer from 'components/templates/UserList/UserListContainer';
 import BoardContainer from 'components/pages/Todo/BoardContainer';
+import Board from '../Dnd/Board';
 
 const dashboardDummy = () => (
   <Box overflowY="auto" h="100%">
@@ -95,6 +102,7 @@ const AdminBaseFrame: FC = () => {
             <Route exact path={PATH_USERS} component={UserListContainer} />
             <Route exact path={PATH_AMOUNT} component={amountDummy} />
             <Route exact path={PATH_TODO} component={BoardContainer} />
+            <Route exact path={PATH_DND} component={Board} />
             <Redirect to={PATH_DASHBOARD} />
           </Switch>
         </Box>

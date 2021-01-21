@@ -8,6 +8,7 @@ export const PATH_DASHBOARD = '/dashboard';
 export const PATH_USERS = '/users';
 export const PATH_AMOUNT = '/amount';
 export const PATH_TODO = '/todo';
+export const PATH_DND = '/dnd';
 
 const RouteManager: FC = () => (
   <>

@@ -94,6 +94,7 @@ const itemList = (
     <SidebarItemContainer icon={MdPersonOutline} label="users" />
     <SidebarItemContainer icon={MdAttachMoney} label="amount" />
     <SidebarItemContainer icon={MdList} label="todo" />
+    <SidebarItemContainer icon={MdList} label="dnd" />
   </Fragment>
 );
 
