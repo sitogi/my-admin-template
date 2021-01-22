@@ -6,6 +6,7 @@ const Droppable: FC<{ id: string }> = ({ id, children }) => {
     id,
   });
   const style = {
+    marginBottom: '10px',
     color: isOver ? 'green' : undefined,
   };
 

@@ -1,32 +1,73 @@
 import React, { FC, useState } from 'react';
-import { DndContext, DragEndEvent } from '@dnd-kit/core';
+import { DndContext, DragEndEvent, DragMoveEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/core';
+import { Box, Flex, Spacer, IconButton, Text } from '@chakra-ui/react';
+import { MdAdd } from 'react-icons/md';
+import { DragCancelEvent } from '@dnd-kit/core/dist/components/DndContext/DndContext';
 import Draggable from './Draggable';
 import Droppable from './Droppable';
 
+const Card: FC<{ text: string }> = ({ text }) => (
+  <Text
+    m="10px"
+    p="10px"
+    h="80px"
+    w="150px"
+    cursor="move"
+    bg="orange.50"
+    rounded="xl"
+    border="1px"
+    borderColor="gray.200"
+  >
+    {text}
+  </Text>
+);
+
 const Board: FC = () => {
-  const containers = ['A', 'B', 'C'];
-  const [parent, setParent] = useState<string | null>(null);
-  const draggableMarkup = <Draggable>Drag me</Draggable>;
-
+  const handleDragStart = (event: DragStartEvent) => {
+    console.log('start');
+  };
+  const handleDragMove = (event: DragMoveEvent) => {
+    console.log('move');
+    console.log(event.over?.id); // 上にいる droppable の id
+  };
+  const handleDragOver = (event: DragOverEvent) => {
+    console.log('over'); // droppable に重なった瞬間の一瞬だけ発火
+  };
   const handleDragEnd = (event: DragEndEvent) => {
-    const { over } = event;
-
-    // If the item is dropped over a container, set it as the parent
-    // otherwise reset the parent to `null`
-    setParent(over ? over.id : null);
+    console.log('end');
+  };
+  const handleDragCancel = (event: DragCancelEvent) => {
+    console.log('cancel');
   };
 
   return (
-    <DndContext onDragEnd={handleDragEnd}>
-      {parent === null ? draggableMarkup : null}
-
-      {containers.map((id) => (
-        // We updated the Droppable component so it would accept an `id`
-        // prop and pass it to `useDroppable`
-        <Droppable key={id} id={id}>
-          {parent === id ? draggableMarkup : 'Drop here'}
-        </Droppable>
-      ))}
+    <DndContext
+      onDragStart={handleDragStart}
+      onDragMove={handleDragMove}
+      onDragOver={handleDragOver}
+      onDragCancel={handleDragCancel}
+      onDragEnd={handleDragEnd}
+    >
+      <Droppable id="list">
+        <Box w="350px" p="20px" bg="White" rounded="xl" boxShadow="xl">
+          <Flex pb="5px">
+            <Text pt="5px" fontSize="20px" color="gray.400">
+              Drop here!
+            </Text>
+            <Spacer />
+            <IconButton aria-label="Add todo" icon={<MdAdd />} onClick={() => {}} />
+          </Flex>
+          <Draggable id="a">
+            <Card text="Drag me A" />
+          </Draggable>
+          <Draggable id="b">
+            <Card text="Drag me B" />
+          </Draggable>
+          <Draggable id="c">
+            <Card text="Drag me C" />
+          </Draggable>
+        </Box>
+      </Droppable>
     </DndContext>
   );
 };
