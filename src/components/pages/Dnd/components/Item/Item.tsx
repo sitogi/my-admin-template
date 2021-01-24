@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import {DraggableSyntheticListeners} from '@dnd-kit/core';
-import {Transform} from '@dnd-kit/utilities';
+import { DraggableSyntheticListeners } from '@dnd-kit/core';
+import { Transform } from '@dnd-kit/utilities';
 
-import {Handle} from './components';
+import { Handle } from './components';
 
 import styles from './Item.module.css';
 
@@ -60,7 +60,7 @@ export const Item = React.memo(
         wrapperStyle,
         ...props
       },
-      ref
+      ref,
     ) => {
       useEffect(() => {
         if (!dragOverlay) {
@@ -94,24 +94,17 @@ export const Item = React.memo(
             styles.Wrapper,
             fadeIn && styles.fadeIn,
             sorting && styles.sorting,
-            dragOverlay && styles.dragOverlay
+            dragOverlay && styles.dragOverlay,
           )}
           style={
             {
               ...wrapperStyle,
               transition,
-              '--translate-x': transform
-                ? `${Math.round(transform.x)}px`
-                : undefined,
-              '--translate-y': transform
-                ? `${Math.round(transform.y)}px`
-                : undefined,
-              '--scale-x': transform?.scaleX
-                ? `${transform.scaleX}`
-                : undefined,
-              '--scale-y': transform?.scaleY
-                ? `${transform.scaleY}`
-                : undefined,
+
+              '--translate-x': transform ? `${Math.round(transform.x)}px` : undefined,
+              '--translate-y': transform ? `${Math.round(transform.y)}px` : undefined,
+              '--scale-x': transform?.scaleX ? `${transform.scaleX}` : undefined,
+              '--scale-y': transform?.scaleY ? `${transform.scaleY}` : undefined,
               '--index': index,
               '--color': color,
             } as React.CSSProperties
@@ -125,7 +118,7 @@ export const Item = React.memo(
               handle && styles.withHandle,
               dragOverlay && styles.dragOverlay,
               disabled && styles.disabled,
-              color && styles.color
+              color && styles.color,
             )}
             tabIndex={!handle ? 0 : undefined}
             style={style}
@@ -138,6 +131,6 @@ export const Item = React.memo(
           </div>
         </li>
       );
-    }
-  )
+    },
+  ),
 );

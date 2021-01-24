@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
@@ -8,18 +9,18 @@ import {
   KeyboardSensor,
   Modifiers,
   PointerSensor,
-  useDroppable,
   UniqueIdentifier,
-  useSensors,
+  useDroppable,
   useSensor,
+  useSensors,
 } from '@dnd-kit/core';
 import {
-  SortableContext,
-  useSortable,
   arrayMove,
+  SortableContext,
   sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
   SortingStrategy,
+  useSortable,
+  verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 
 import { Item, List } from './components';
@@ -138,9 +139,7 @@ export function MultipleContainers({
       return -1;
     }
 
-    const index = items[container].indexOf(id);
-
-    return index;
+    return items[container].indexOf(id);
   };
 
   return (
@@ -234,7 +233,7 @@ export function MultipleContainers({
       onDragCancel={() => {
         if (dragOverlaydItems) {
           // Reset items to their original state in case items have been
-          // Dragged across containrs
+          // Dragged across containers
           setItems(dragOverlaydItems);
         }
 
@@ -245,7 +244,8 @@ export function MultipleContainers({
     >
       <div
         style={{
-          display: 'inline-grid',
+          display: 'flex',
+          flexWrap: 'wrap',
           boxSizing: 'border-box',
           padding: '0px 20px',
           gridAutoFlow: vertical ? 'row' : 'column',
@@ -291,7 +291,7 @@ export function MultipleContainers({
                 overIndex: -1,
                 index: getIndex(activeId),
                 value: activeId,
-                isSorting: activeId !== null,
+                isSorting: true,
                 isDragging: true,
                 isDragOverlay: true,
               })}
